@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login</title>
+
+    <style>
+
+        * {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+        }
+
+        body {
+          min-height: 75vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: #b8ebff;
+          font-family: "Lucida Console";
+          background-image: url("bg.png");
+        }
+
+        form,
+
+        .message {
+          padding: 30px;
+          border-radius: 3px;
+          background: #fff;
+        }
+
+        h1 {
+          margin: 20px 0;
+          text-align: center;
+          line-height: 1.2;
+        }
+
+        input {
+          display: block;
+          padding: 10px 60px;
+          outline: none;
+          font-size: 12px;
+          border-top: 0;
+          border-right: 0;
+          border-left: 0;
+          border-bottom: 2px solid #01C3FF;
+          border-radius: 0;
+          margin-top: 10px;
+          width: 100%;
+          color: #888;
+          font-family: "Lucida Console";
+
+        }
+
+        input:first-of-type {
+            margin-top: 15px;
+        }
+
+        .btn {
+            padding: 8px ;
+            text-align: center;
+            display: block;
+            width: 100%;
+            cursor: pointer;
+            border: none;
+            background: #01C3FF;
+            color: #fff;
+            margin-top: 10px;
+            border-radius: 3px;
+            text-decoration: none;
+            font-family: "Lucida Console";
+        }
+
+        button:hover {
+          opacity: 0.9;
+        }
+
+        .hide {
+          display: none;
+        }
+
+        /* message after a successful login */
+        #messageDetails {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <form action="" id="frmLogin">
+
+      <h1>Login</h1>
+
+      <br><br>
+
+      <input type="text" name="txtUsername" id="txtUsername" placeholder="Enter your username" required>
+      <br>
+      <input type="password" name="txtPassword" id="txtPassword" placeholder="Enter your password" required>
+      <br><br><br>
+      <button type="submit" class="btn">Login</button>
+
+    </form>
+
+    <div class="message hide">
+
+        <p id="messageDetails"></p>
+
+        <a href="" class="btn">Reset</a>
+
+    </div>
+
+  <script>
+
+      document.querySelector('form').onsubmit  = (e) => {
+          e.preventDefault()
+          let username  = '" OR ""="',
+              password  = '" OR ""="',
+              inputUser = document.querySelector('#txtUsername').value,
+              inputPass = document.querySelector('#txtPassword').value
+
+          if (inputUser != username || inputPass != password) {
+            document.querySelector('#messageDetails').innerHTML = "Username and Password invalid.<br>Please try again."
+          }
+
+          if (inputUser == username && inputPass == password) {
+            document.querySelector('#messageDetails').innerHTML = "Success!<br>You're currently logged in.<br><br>CTFdash{1nj3ction5_4re_9o0d_f0r_you_2iou3h5io}"
+          }
+          
+          document.querySelector('#frmLogin').classList.add("hide")
+          document.querySelector('.message').classList.remove("hide")
+      }
+  </script>
+
+</body>
+
+</html>
