@@ -126,16 +126,21 @@
 
       document.querySelector('form').onsubmit  = (e) => {
           e.preventDefault()
-          let username  = '" OR ""="',
-              password  = '" OR ""="',
+          var username1  = ['" OR ""="', '" or ""="'],
+              password1  = ['" OR ""="', '" or ""="'],
               inputUser = document.querySelector('#txtUsername').value,
               inputPass = document.querySelector('#txtPassword').value
 
-          if (inputUser != username || inputPass != password) {
+          var username2  = ["' OR 1=1--", "' or 1=1--"],
+              password2 = ["' OR 1=1--", "' or 1=1--"],
+              inputUser = document.querySelector('#txtUsername').value,
+              inputPass = document.querySelector('#txtPassword').value
+
+          if (username1.indexOf(inputUser) != username1 || username2.indexOf(inputUser) != username2 || password1.indexOf(inputUser) != password1 || password2.indexOf(inputUser) != password2) {
             document.querySelector('#messageDetails').innerHTML = "Username and Password invalid.<br>Please try again."
           }
 
-          if (inputUser == username && inputPass == password) {
+          if (username1.indexOf(inputUser) != username1 && password1.indexOf(inputUser) != password1  || username2.indexOf(inputUser) != username2 && password2.indexOf(inputUser) != password2) {
             document.querySelector('#messageDetails').innerHTML = "Success!<br>You're currently logged in.<br><br>CTFdash{1nj3ction5_4re_9o0d_f0r_you_2iou3h5io}"
           }
           
